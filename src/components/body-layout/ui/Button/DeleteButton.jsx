@@ -1,7 +1,11 @@
 import style from "./DeleteButton.module.css";
 
-export default function DeletedButton() {
+export default function DeletedButton({onDeleteBrawler}) {
   return (
-    <button className={ style.delete }>X</button>
+    <button 
+    className={ style.delete }
+    onClick={onDeleteBrawler}
+    >X
+    </button>
   );
 }

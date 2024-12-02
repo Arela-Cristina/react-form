@@ -34,7 +34,7 @@ export default function Body() {
     setNewBrawler(e.target.value) //Passiamo il value alla funzione setNewBrawler del nostro state per  input text
   }
 
-  
+
   //GESTIONE INPUT SUBMIT
   function addBrawler(e){
     e.preventDefault()//per evitare dei risettare il sito
@@ -52,6 +52,13 @@ export default function Body() {
     setBrawler([...brawler, newBrawlerObject])
     console.log(setBrawler([...brawler, newBrawlerObject]))
     setNewBrawler('')//dopo Submit svuotiamo il campo di input text
+  }
+
+
+  //GESTIONE DELETE
+  function deleteBrawler(id){
+    const updatedBrawlers = brawler.filter((el) => el.id !== id);
+    setBrawler(updatedBrawlers);
   }
 
   return (
@@ -90,6 +97,8 @@ export default function Body() {
               description={el.description}
               key={el.id}
               published={el.published}
+              id={el.id} //pasiamo il ID
+              onDeleteBrawler = {()=>deleteBrawler(el.id)}//pasiamo la funzione come prop con il id di ogni oggetto
             />
           ))}
         </div>

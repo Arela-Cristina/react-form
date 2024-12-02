@@ -5,7 +5,7 @@ import DeletedButton from "../ui/Button/DeleteButton.jsx";
 import imgVuota from "../../../assets/imagine-vuota.jpg";
 
 
-export default function Card({ thumb, title, description, id, published, tag }) {
+export default function Card({ thumb, title, description, id, published, tag, onDeleteBrawler }) {
 
   return (
     
@@ -15,7 +15,8 @@ export default function Card({ thumb, title, description, id, published, tag }) 
         src={published ? `src/assets/${thumb}` : imgVuota}
         alt="Mandys candies"
       />
-      <DeletedButton />
+      {/* passiamo la funzione di deleted come prop del Body alla Card*/}
+      <DeletedButton onDeleteBrawler= {onDeleteBrawler}/>
       <div className={style.cardBody}>
         <h3 className="card-title">{title}</h3>
         <Tags tags={tag} />
